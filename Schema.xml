@@ -1,0 +1,270 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="DataSet" targetNamespace="http://tempuri.org/DataSet.xsd" xmlns:mstns="http://tempuri.org/DataSet.xsd" xmlns="http://tempuri.org/DataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:element name="DataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Abridgement">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" type="xs:int" />
+              <xs:element name="source">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="abridged">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Auditoriums">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID_Auditorium" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" type="xs:int" />
+              <xs:element name="Number">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Capacity" type="xs:int" />
+              <xs:element name="NumbComp" type="xs:int" />
+              <xs:element name="QualityComp">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AvailabilityProjector">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ID_Location" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Disciplines">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID_Discipline" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" type="xs:int" />
+              <xs:element name="Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DiscipTeachers">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" type="xs:int" />
+              <xs:element name="ID_Discipline" type="xs:int" />
+              <xs:element name="ID_Teacher" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Education">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID_Education" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" type="xs:int" />
+              <xs:element name="Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Faculty">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID_Faculty" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" type="xs:int" />
+              <xs:element name="Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Group">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID_Group" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" type="xs:int" />
+              <xs:element name="Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ID_Faculty" type="xs:int" />
+              <xs:element name="ID_Education" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Location">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID_Location" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" type="xs:int" />
+              <xs:element name="Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Periods">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID_Period" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" type="xs:int" />
+              <xs:element name="Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Schedule">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" type="xs:int" />
+              <xs:element name="Para" type="xs:int" />
+              <xs:element name="DayWeek" type="xs:int" />
+              <xs:element name="ID_Period" type="xs:int" />
+              <xs:element name="ID_Group" type="xs:int" />
+              <xs:element name="ID_Discipline" type="xs:int" />
+              <xs:element name="ID_Teacher" type="xs:int" />
+              <xs:element name="ID_Auditorium" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ScheduleException">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID_Exception" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" type="xs:int" />
+              <xs:element name="Para" type="xs:int" />
+              <xs:element name="DayWeek" type="xs:int" />
+              <xs:element name="ID_Group" type="xs:int" />
+              <xs:element name="ID_Discipline" type="xs:int" />
+              <xs:element name="ID_Teacher" type="xs:int" />
+              <xs:element name="ID_Auditorium" type="xs:int" />
+              <xs:element name="Day">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Teachers">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID_Teacher" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" type="xs:int" />
+              <xs:element name="Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Abridgement" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="Auditoriums_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Auditoriums" />
+      <xs:field xpath="mstns:ID_Auditorium" />
+    </xs:unique>
+    <xs:unique name="Disciplines_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Disciplines" />
+      <xs:field xpath="mstns:ID_Discipline" />
+    </xs:unique>
+    <xs:unique name="DiscipTeachers_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DiscipTeachers" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+    <xs:unique name="Education_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Education" />
+      <xs:field xpath="mstns:ID_Education" />
+    </xs:unique>
+    <xs:unique name="Faculty_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Faculty" />
+      <xs:field xpath="mstns:ID_Faculty" />
+    </xs:unique>
+    <xs:unique name="Group_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Group" />
+      <xs:field xpath="mstns:ID_Group" />
+    </xs:unique>
+    <xs:unique name="Location_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Location" />
+      <xs:field xpath="mstns:ID_Location" />
+    </xs:unique>
+    <xs:unique name="Periods_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Periods" />
+      <xs:field xpath="mstns:ID_Period" />
+    </xs:unique>
+    <xs:unique name="Schedule_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Schedule" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+    <xs:unique name="ScheduleException_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ScheduleException" />
+      <xs:field xpath="mstns:ID_Exception" />
+    </xs:unique>
+    <xs:unique name="Teachers_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Teachers" />
+      <xs:field xpath="mstns:ID_Teacher" />
+    </xs:unique>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="FK_Auditoriums_Location" msdata:parent="Location" msdata:child="Auditoriums" msdata:parentkey="ID_Location" msdata:childkey="ID_Location" />
+      <msdata:Relationship name="FK_DiscipTeachers_Disciplines" msdata:parent="Disciplines" msdata:child="DiscipTeachers" msdata:parentkey="ID_Discipline" msdata:childkey="ID_Discipline" />
+      <msdata:Relationship name="FK_DiscipTeachers_Teachers" msdata:parent="Teachers" msdata:child="DiscipTeachers" msdata:parentkey="ID_Teacher" msdata:childkey="ID_Teacher" />
+      <msdata:Relationship name="FK_Group_Education" msdata:parent="Education" msdata:child="Group" msdata:parentkey="ID_Education" msdata:childkey="ID_Education" />
+      <msdata:Relationship name="FK_Group_Faculty" msdata:parent="Faculty" msdata:child="Group" msdata:parentkey="ID_Faculty" msdata:childkey="ID_Faculty" />
+      <msdata:Relationship name="FK_Schedule_Auditoriums" msdata:parent="Auditoriums" msdata:child="Schedule" msdata:parentkey="ID_Auditorium" msdata:childkey="ID_Auditorium" />
+      <msdata:Relationship name="FK_Schedule_Disciplines" msdata:parent="Disciplines" msdata:child="Schedule" msdata:parentkey="ID_Discipline" msdata:childkey="ID_Discipline" />
+      <msdata:Relationship name="FK_Schedule_Group1" msdata:parent="Group" msdata:child="Schedule" msdata:parentkey="ID_Group" msdata:childkey="ID_Group" />
+      <msdata:Relationship name="FK_Schedule_Periods" msdata:parent="Periods" msdata:child="Schedule" msdata:parentkey="ID_Period" msdata:childkey="ID_Period" />
+      <msdata:Relationship name="FK_Schedule_Teachers" msdata:parent="Teachers" msdata:child="Schedule" msdata:parentkey="ID_Teacher" msdata:childkey="ID_Teacher" />
+      <msdata:Relationship name="FK_ScheduleException_Auditoriums" msdata:parent="Auditoriums" msdata:child="ScheduleException" msdata:parentkey="ID_Auditorium" msdata:childkey="ID_Auditorium" />
+      <msdata:Relationship name="FK_ScheduleException_Disciplines" msdata:parent="Disciplines" msdata:child="ScheduleException" msdata:parentkey="ID_Discipline" msdata:childkey="ID_Discipline" />
+      <msdata:Relationship name="FK_ScheduleException_Group" msdata:parent="Group" msdata:child="ScheduleException" msdata:parentkey="ID_Group" msdata:childkey="ID_Group" />
+      <msdata:Relationship name="FK_ScheduleException_Teachers" msdata:parent="Teachers" msdata:child="ScheduleException" msdata:parentkey="ID_Teacher" msdata:childkey="ID_Teacher" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

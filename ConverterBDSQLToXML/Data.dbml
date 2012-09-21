@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="Database" Class="DataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True;User Instance=True" SettingsObjectName="SystemEnumerationAuditorium.Properties.Settings" SettingsPropertyName="DatabaseConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Abridgement" Member="Abridgement">
+    <Type Name="Abridgement">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="source" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="abridged" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Auditoriums" Member="Auditoriums">
+    <Type Name="Auditoriums">
+      <Column Name="ID_Auditorium" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Number" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Capacity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NumbComp" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QualityComp" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AvailabilityProjector" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ID_Location" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Auditoriums_Schedule" Member="Schedule" OtherKey="ID_Auditorium" Type="Schedule" />
+      <Association Name="Auditoriums_ScheduleException" Member="ScheduleException" OtherKey="ID_Auditorium" Type="ScheduleException" />
+      <Association Name="Location_Auditoriums" Member="Location" ThisKey="ID_Location" Type="Location" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Disciplines" Member="Disciplines">
+    <Type Name="Disciplines">
+      <Column Name="ID_Discipline" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Disciplines_DiscipTeachers" Member="DiscipTeachers" OtherKey="ID_Discipline" Type="DiscipTeachers" />
+      <Association Name="Disciplines_Schedule" Member="Schedule" OtherKey="ID_Discipline" Type="Schedule" />
+      <Association Name="Disciplines_ScheduleException" Member="ScheduleException" OtherKey="ID_Discipline" Type="ScheduleException" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DiscipTeachers" Member="DiscipTeachers">
+    <Type Name="DiscipTeachers">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_Discipline" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_Teacher" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Disciplines_DiscipTeachers" Member="Disciplines" ThisKey="ID_Discipline" Type="Disciplines" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="Teachers_DiscipTeachers" Member="Teachers" ThisKey="ID_Teacher" Type="Teachers" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Education" Member="Education">
+    <Type Name="Education">
+      <Column Name="ID_Education" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Education_Group" Member="Group" OtherKey="ID_Education" Type="Group" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Faculty" Member="Faculty">
+    <Type Name="Faculty">
+      <Column Name="ID_Faculty" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Faculty_Group" Member="Group" OtherKey="ID_Faculty" Type="Group" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Group]" Member="Group">
+    <Type Name="Group">
+      <Column Name="ID_Group" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ID_Faculty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_Education" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Group_Schedule" Member="Schedule" OtherKey="ID_Group" Type="Schedule" />
+      <Association Name="Group_ScheduleException" Member="ScheduleException" OtherKey="ID_Group" Type="ScheduleException" />
+      <Association Name="Education_Group" Member="Education" ThisKey="ID_Education" Type="Education" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="Faculty_Group" Member="Faculty" ThisKey="ID_Faculty" Type="Faculty" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Location" Member="Location">
+    <Type Name="Location">
+      <Column Name="ID_Location" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Location_Auditoriums" Member="Auditoriums" OtherKey="ID_Location" Type="Auditoriums" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Periods" Member="Periods">
+    <Type Name="Periods">
+      <Column Name="ID_Period" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Periods_Schedule" Member="Schedule" OtherKey="ID_Period" Type="Schedule" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Schedule" Member="Schedule">
+    <Type Name="Schedule">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Para" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DayWeek" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_Period" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_Group" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_Discipline" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_Teacher" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_Auditorium" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Auditoriums_Schedule" Member="Auditoriums" ThisKey="ID_Auditorium" Type="Auditoriums" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="Disciplines_Schedule" Member="Disciplines" ThisKey="ID_Discipline" Type="Disciplines" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="Group_Schedule" Member="Group" ThisKey="ID_Group" Type="Group" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="Periods_Schedule" Member="Periods" ThisKey="ID_Period" Type="Periods" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="Teachers_Schedule" Member="Teachers" ThisKey="ID_Teacher" Type="Teachers" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ScheduleException" Member="ScheduleException">
+    <Type Name="ScheduleException">
+      <Column Name="ID_Exception" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Para" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DayWeek" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_Group" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_Discipline" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_Teacher" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_Auditorium" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Day" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Auditoriums_ScheduleException" Member="Auditoriums" ThisKey="ID_Auditorium" Type="Auditoriums" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="Disciplines_ScheduleException" Member="Disciplines" ThisKey="ID_Discipline" Type="Disciplines" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="Group_ScheduleException" Member="Group" ThisKey="ID_Group" Type="Group" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="Teachers_ScheduleException" Member="Teachers" ThisKey="ID_Teacher" Type="Teachers" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Teachers" Member="Teachers">
+    <Type Name="Teachers">
+      <Column Name="ID_Teacher" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Association Name="Teachers_DiscipTeachers" Member="DiscipTeachers" OtherKey="ID_Teacher" Type="DiscipTeachers" />
+      <Association Name="Teachers_Schedule" Member="Schedule" OtherKey="ID_Teacher" Type="Schedule" />
+      <Association Name="Teachers_ScheduleException" Member="ScheduleException" OtherKey="ID_Teacher" Type="ScheduleException" />
+    </Type>
+  </Table>
+  <Function Name="dbo.InsertTeacher" Method="InsertTeacher">
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(20)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.InsertAuditorium" Method="InsertAuditorium">
+    <Parameter Name="Number" Parameter="number" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Capacity" Parameter="capacity" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AvailabilityProjector" Parameter="availabilityProjector" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="NumbComp" Parameter="numbComp" Type="System.Int32" DbType="Int" />
+    <Parameter Name="QualityComp" Parameter="qualityComp" Type="System.String" DbType="NVarChar(20)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemEnumerationAuditorium", "SystemEnumerationAuditorium\SystemEnumerationAuditorium.csproj", "{E48C6528-EEFE-425A-9629-DE67C15CC58D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConverterBDSQLToXML", "ConverterBDSQLToXML\ConverterBDSQLToXML.csproj", "{2B67B95F-CA0E-4219-9D3F-21E051621258}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup1\Setup1.vdproj", "{2F004B79-A7B0-405C-ACFD-DEB875679390}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E48C6528-EEFE-425A-9629-DE67C15CC58D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E48C6528-EEFE-425A-9629-DE67C15CC58D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E48C6528-EEFE-425A-9629-DE67C15CC58D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E48C6528-EEFE-425A-9629-DE67C15CC58D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B67B95F-CA0E-4219-9D3F-21E051621258}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B67B95F-CA0E-4219-9D3F-21E051621258}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B67B95F-CA0E-4219-9D3F-21E051621258}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B67B95F-CA0E-4219-9D3F-21E051621258}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F004B79-A7B0-405C-ACFD-DEB875679390}.Debug|Any CPU.ActiveCfg = Debug
+		{2F004B79-A7B0-405C-ACFD-DEB875679390}.Debug|Any CPU.Build.0 = Debug
+		{2F004B79-A7B0-405C-ACFD-DEB875679390}.Release|Any CPU.ActiveCfg = Release
+		{2F004B79-A7B0-405C-ACFD-DEB875679390}.Release|Any CPU.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
