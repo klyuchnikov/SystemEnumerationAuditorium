@@ -21,7 +21,7 @@ namespace SystemEnumerationAuditorium
 			var load = new LoadProgram();
 			load.Show();
 			Model.Load();
-			LoadMenu(load.Bar);
+		//	LoadMenu(load.Bar);
             load.Close();
 			foreach (DataGridViewColumn a in Shcedule.Columns)
 				a.SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -400,7 +400,7 @@ namespace SystemEnumerationAuditorium
 		{
 			var converter = new Converter();
 			converter.ShowDialog();
-			LoadMenu();
+			//LoadMenu();
 			Main_SelectedIndexChanged(sender, e);
 		}
 
