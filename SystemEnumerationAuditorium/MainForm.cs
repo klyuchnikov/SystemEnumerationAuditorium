@@ -5,6 +5,11 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Linq;
 using System.IO;
+using System.Data.OleDb;
+using CSharpJExcel.Jxl;
+using Application = System.Windows.Forms.Application;
+using Font = System.Drawing.Font;
+using Rectangle = System.Drawing.Rectangle;
 
 namespace SystemEnumerationAuditorium
 {
@@ -13,6 +18,8 @@ namespace SystemEnumerationAuditorium
 	    public MainForm()
 		{
 			InitializeComponent();
+
+            Parser.Parse();
            // this.MinimumSizeChanged +
          //  tableLayoutPanel1.senro
             var t = this.Controls;

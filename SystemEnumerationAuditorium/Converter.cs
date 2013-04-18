@@ -80,76 +80,90 @@ namespace SystemEnumerationAuditorium
                     {
                         ind += 2;
                         toolStripProgressBar1.PerformStep();
-                        value = Regex.Match(arr[ind], @"CENTER"">(?<str>.*)</Font", RegexOptions.IgnoreCase).Groups["str"].Value.TrimStart();
-                        if (value == "_    ")
-                            continue;
-                        mAu = Regex.Matches(value, @" а\.\S+");
-                        mcollection = Regex.Matches(value, @"( [А-ЯЁ]{3,} [А-Я]( |\.)[А-Я]( |\.)|ПРЕПАДП\d?|АСС. ФИЗИКА \d)");
-                        if (mAu.Count != mcollection.Count)
-                            mcollection = Regex.Matches(value, @"( [А-ЯЁ]{3,} [А-Я]( |\.)([А-Я]( |\.))?|ПРЕПАДП\d?|АСС. ФИЗИКА \d)");
-                        dispStr = value.Substring(0, mcollection[0].Index).Trim();
-                        for (var k = 0; k < mcollection.Count; k++)
+                        try
                         {
-                            if (mcollection[k].Value == "" || mAu[k].Value == "")
+
+                            value =
+                                Regex.Match(arr[ind], @"CENTER"">(?<str>.*)</Font", RegexOptions.IgnoreCase).Groups[
+                                    "str"].Value.TrimStart();
+                            if (value == "_    ")
                                 continue;
-                            teacher = Model.GetTeacherFromString(mcollection[k].Value.Trim());
-                            disp = Model.GetDisciplineFromString(dispStr, teacher);
-                            au = mAu[k].Value.Trim();
-                            if (au.EndsWith("-"))
-                                au = au.Substring(0, au.Length - 1);
-                            if (au.Contains("(2") && !au.Contains(")"))
-                                au = au.Substring(0, au.Length - 2);
-                            else if (au.Contains("(2)") && !au.Contains("СЗ"))
-                                au = au.Substring(0, au.Length - 3);
-                            if (au.Contains("/3"))
+                            mAu = Regex.Matches(value, @" а\.\S+");
+                            mcollection = Regex.Matches(value,
+                                                        @"( [А-ЯЁ]{3,} [А-Я]( |\.)[А-Я]( |\.)|ПРЕПАДП\d?|АСС. ФИЗИКА \d)");
+                            if (mAu.Count != mcollection.Count)
+                                mcollection = Regex.Matches(value,
+                                                            @"( [А-ЯЁ]{3,} [А-Я]( |\.)([А-Я]( |\.))?|ПРЕПАДП\d?|АСС. ФИЗИКА \d)");
+                            dispStr = value.Substring(0, mcollection[0].Index).Trim();
+                            for (var k = 0; k < mcollection.Count; k++)
                             {
-                                loc = "3уч.к";
-                                au = au.Substring(2, au.Length - 4);
+                                if (mcollection[k].Value == "" || mAu[k].Value == "")
+                                    continue;
+                                teacher = Model.GetTeacherFromString(mcollection[k].Value.Trim());
+                                disp = Model.GetDisciplineFromString(dispStr, teacher);
+                                au = mAu[k].Value.Trim();
+                                if (au.EndsWith("-"))
+                                    au = au.Substring(0, au.Length - 1);
+                                if (au.Contains("(2") && !au.Contains(")"))
+                                    au = au.Substring(0, au.Length - 2);
+                                else if (au.Contains("(2)") && !au.Contains("СЗ"))
+                                    au = au.Substring(0, au.Length - 3);
+                                if (au.Contains("/3"))
+                                {
+                                    loc = "3уч.к";
+                                    au = au.Substring(2, au.Length - 4);
+                                }
+                                else if (au.Contains("а.г"))
+                                {
+                                    loc = "гл.к";
+                                    au = au.Substring(3, au.Length - 3);
+                                }
+                                else if (au.Contains("а.сф"))
+                                {
+                                    loc = "сф.к";
+                                    au = au.Substring(4, au.Length - 4);
+                                }
+                                else if (au.Contains("а.э"))
+                                {
+                                    loc = "э.к";
+                                    au = au.Substring(3, au.Length - 3);
+                                }
+                                else if (au.Contains("/2"))
+                                {
+                                    loc = "2уч.к";
+                                    au = au.Substring(2, au.Length - 4);
+                                }
+                                else if (au.Contains("а.в"))
+                                {
+                                    loc = "в";
+                                    au = au.Substring(3, au.Length - 3);
+                                }
+                                else if (au.Contains("а.КафИн"))
+                                {
+                                    loc = "гл.к";
+                                    au = au.Substring(2, au.Length - 2);
+                                }
+                                else if (au.Contains("а.КафРОН"))
+                                {
+                                    loc = "гл.к";
+                                    au = au.Substring(2, au.Length - 2);
+                                }
+                                else
+                                {
+                                    loc = "н/д";
+                                    au = au.Substring(2, au.Length - 2);
+                                }
+                                location = Model.GetLocationFromString(loc);
+                                auditorium = Model.GetAuditoriumFromString(au, location);
+                                Model.Add.Schedule(auditorium.ID_Auditorium, disp.ID_Discipline, group.ID_Group,
+                                                   ind < 164 ? edu : edu - 1, teacher.ID_Teacher, para + 1, dayweek);
                             }
-                            else if (au.Contains("а.г"))
-                            {
-                                loc = "гл.к";
-                                au = au.Substring(3, au.Length - 3);
-                            }
-                            else if (au.Contains("а.сф"))
-                            {
-                                loc = "сф.к";
-                                au = au.Substring(4, au.Length - 4);
-                            }
-                            else if (au.Contains("а.э"))
-                            {
-                                loc = "э.к";
-                                au = au.Substring(3, au.Length - 3);
-                            }
-                            else if (au.Contains("/2"))
-                            {
-                                loc = "2уч.к";
-                                au = au.Substring(2, au.Length - 4);
-                            }
-                            else if (au.Contains("а.в"))
-                            {
-                                loc = "в";
-                                au = au.Substring(3, au.Length - 3);
-                            }
-                            else if (au.Contains("а.КафИн"))
-                            {
-                                loc = "гл.к";
-                                au = au.Substring(2, au.Length - 2);
-                            }
-                            else if (au.Contains("а.КафРОН"))
-                            {
-                                loc = "гл.к";
-                                au = au.Substring(2, au.Length - 2);
-                            }
-                            else
-                            {
-                                loc = "н/д";
-                                au = au.Substring(2, au.Length - 2);
-                            }
-                            location = Model.GetLocationFromString(loc);
-                            auditorium = Model.GetAuditoriumFromString(au, location);
-                            Model.Add.Schedule(auditorium.ID_Auditorium, disp.ID_Discipline, group.ID_Group,
-                                ind < 164 ? edu : edu - 1, teacher.ID_Teacher, para + 1, dayweek);
+
+                        }
+                        catch (Exception)
+                        {
+
+                       //     throw;
                         }
                     }
                     ind += 3;
